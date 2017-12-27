@@ -1,4 +1,4 @@
-%macro descriptor 3	;段基址32位，段界限16位，属性16位
+%macro descriptor 3	;段基址32位，段界限20位，属性16位
 	dw	%2 & 0ffffh
 	dw	%1 & 0ffffh
 	db	(%1>>16) & 0ffh

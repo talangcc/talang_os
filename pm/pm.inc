@@ -31,3 +31,29 @@ DA_386TSS	EQU		10001001B	;TYPE=9任务状态段
 DA_386CGATE	EQU		10001100B	;TYPE=C调用门
 DA_386IGATE	EQU		10001110B	;TYPE=E中断门
 DA_386TGATE	EQU		10001111B	;TYPE=F陷阱门
+
+SA_TIL		EQU		0100B		;用第2位即TI位来区分LDT和GDT，TI=1时表示LDT
+;打开A20
+%macro EnableA20 0
+	push	ax
+	in	al, 92h
+	or	al, 00000010b
+	out	92h, al
+	pop	ax
+%endmacro
+
+;关闭A20
+%macro DisableA20 0
+	push	ax
+	in	al, 92h
+	and	al, 11111101b
+	out	92h, al
+	pop	ax
+%endmacro
+
+;显示一个字符
+%macro EchoCh 1		; ascii值（8位）
+	mov	ah, 2
+	mov	dl, %1
+	int	21h
+%endmacro

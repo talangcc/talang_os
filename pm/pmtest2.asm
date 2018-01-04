@@ -217,19 +217,6 @@ LABEL_SEG_CODE16:
 	mov	gs, ax
 	mov	ss, ax
 
-;	mov	ax, 4c00h
-;	int	21h			
-;
-;	mov ax, TestMessage
-;	mov bp, ax
-;	mov cx, 31
-;	mov ax, 1301h
-;	mov bx, 000ch
-;	mov dl, 0
-;	int 10h
-;	ret
-;TestMessage: db "We will get into the real mode!"
-
 	mov	eax, cr0
 	and	eax, 0fffffffeh
 	mov	cr0, eax

@@ -1,6 +1,6 @@
 ;pmtest1
 %include "pm.inc"
-	org	07c00h
+	org	0100h
 	jmp	LABEL_BEGIN
 
 ;段描述符
@@ -71,9 +71,3 @@ LABEL_SEG_CODE32:
 	jmp	$
 ;StrHelloWorld		db	'Hello,OS'
 LenSegCode32		equ	$-LABEL_SEG_CODE32
-
-;进入实模式
-	mov	eax, cr0
-	and	eax, 0fffffffeh
-	mov	cr0, eax
-	;jmp	dword SelectorCode16:0	

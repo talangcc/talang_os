@@ -1,10 +1,19 @@
-%macro descriptor 3	;段基址32位，段界限20位，属性16位
+%macro Descriptor 3	;段基址32位，段界限20位，属性16位
 	dw	%2 & 0ffffh
 	dw	%1 & 0ffffh
 	db	(%1>>16) & 0ffh
 	dw	(%2>>16) & 0fh | %3 & 0ffffh
 	db	(%1>>24) & 0ffh
 %endmacro
+
+%macro Gate 4		;偏移32位，选择子32位，ParamCount8位，属性8位
+	dw	%1 & 0ffffh
+	dw	%2 & 0ffffh
+	db	(%3 & 0ffh) 
+	db	%4 & 0ffh
+	dw	(%1>>16) & 0ffffh
+%endmacro
+
 ;描述符属性
 ;7G 6D/B 50 4AVL 3-0LIMIT
 ;7P 6-5DPL 4S 3-0TYPE
@@ -57,3 +66,4 @@ SA_TIL		EQU		0100B		;用第2位即TI位来区分LDT和GDT，TI=1时表示LDT
 	mov	dl, %1
 	int	21h
 %endmacro
+

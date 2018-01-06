@@ -5,9 +5,9 @@
 
 ;段描述符
 [SECTION .gdt]
-DescriptorGDT 		descriptor 0, 0, 0
-DescriptorCode32 	descriptor 0, LenSegCode32-1, DA_C+DA_32
-DescriptorVideo		descriptor 0b8000h, 0ffffh, DA_DRW
+DescriptorGDT 		Descriptor 0, 0, 0
+DescriptorCode32 	Descriptor 0, LenSegCode32-1, DA_C+DA_32
+DescriptorVideo		Descriptor 0b8000h, 0ffffh, DA_DRW
 
 ;GDTR
 LenGdt			equ	$-DescriptorGDT

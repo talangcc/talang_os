@@ -59,11 +59,3 @@ SA_TIL		EQU		0100B		;用第2位即TI位来区分LDT和GDT，TI=1时表示LDT
 	out	92h, al
 	pop	ax
 %endmacro
-
-;显示一个字符
-%macro EchoCh 1		; ascii值（8位）
-	mov	ah, 2
-	mov	dl, %1
-	int	21h
-%endmacro
-

@@ -1,4 +1,4 @@
-;pmtest2
+;pmtest3
 ;进入保护模式并返回到实模式
 %include "pm.inc"
 	org	0100h

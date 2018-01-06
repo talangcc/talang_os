@@ -7,14 +7,14 @@
 ;段描述符
 [SECTION .gdt]
 LABEL_GDT:
-DescriptorGDT 		descriptor 0, 0, 0
-DescriptorNormal	descriptor 0, 0ffffh, DA_DRW
-DescriptorCode32 	descriptor 0, LenSegCode32-1, DA_C+DA_32
-DescriptorCode16	descriptor 0, 0ffffh, DA_C
-DescriptorVideo		descriptor 0b8000h, 0ffffh, DA_DRW
-DescriptorData		descriptor 0, LenSegData-1, DA_DRW
-DescriptorStack		descriptor 0, TopOfStack, DA_DRWA+DA_32
-DescriptorLDT		descriptor 0, LenLdt-1, DA_LDT
+DescriptorGDT 		Descriptor 0, 0, 0
+DescriptorNormal	Descriptor 0, 0ffffh, DA_DRW
+DescriptorCode32 	Descriptor 0, LenSegCode32-1, DA_C+DA_32
+DescriptorCode16	Descriptor 0, 0ffffh, DA_C
+DescriptorVideo		Descriptor 0b8000h, 0ffffh, DA_DRW
+DescriptorData		Descriptor 0, LenSegData-1, DA_DRW
+DescriptorStack		Descriptor 0, TopOfStack, DA_DRWA+DA_32
+DescriptorLDT		Descriptor 0, LenLdt-1, DA_LDT
 
 ;GDTR
 LenGDT			equ	$-DescriptorGDT
@@ -32,7 +32,7 @@ SelectorLDT		equ	DescriptorLDT-LABEL_GDT
 
 [SECTION .ldt]
 LABEL_LDT:
-DescriptorCode32_LDT	descriptor 0, LenSegCode32_LDT-1, DA_C+DA_32
+DescriptorCode32_LDT	Descriptor 0, LenSegCode32_LDT-1, DA_C+DA_32
 LenLdt			equ	$-LABEL_LDT
 
 ;段选择子
